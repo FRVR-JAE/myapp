@@ -1,0 +1,149 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+<div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="{% url 'home' %}">
+            <span>
+              Job Seeker
+            </span>
+          </a>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class=""> </span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav  ml-auto">
+              <li class="nav-item ">
+                <a class="nav-link" href="{% url 'home' %}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href=""> About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="">Jobs</a>
+              </li>
+
+            </ul>
+            <div class="user_option">
+              <a class="nav-link" href="#">
+                <i class="fa fa-user" aria-hidden="true"></i>
+              </a>
+              <form class="form-inline">
+                <button class="btn   nav_search-btn" type="submit">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+<h1>APPLY FOR -</h1>
+    <br>
+
+    <h1>Name - <b>{{work.person_name}}</b></h1>
+<h1>Work Description -{{work.work_dec}}</h1>
+<h1>Work Type -{{work.work_type}}</h1>
+<h1>Pay -{{work.pay_for_work}}</h1>
+
+<form method="post" action="">
+     {% csrf_token %}
+<input type="hidden" id="work_type" name="work_type" value="{{work.work_type}}">
+<input type="hidden" id="usr" name="worker" value="{{request.user}}">
+<input type="hidden" id="wrk_id" name="worker_id" value="{{request.user.id}}">
+
+<input type="hidden" id="person_name" name="person_name" value="{{work.person_name}}">
+
+<div>
+
+
+
+ <button id="pr" type="submit" class="btn btn-dark my-2">Apply</button>
+
+</div>
+
+</form>
+
+<section class="info_section ">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h4>
+            Jobs
+          </h4>
+          <p>
+            Established fact that a reader will be distracted by the readable content of a page when looking at its
+            layout. The point of using Lorem Ipsum
+          </p>
+        </div>
+        <div class="col-md-4">
+          <div class="info_logo_box">
+            <a href="">
+              ILE-ISE
+            </a>
+            
+          </div>
+           </div>
+          <div class="social_container">
+            <div>
+              <a href="">
+                <i class="fa fa-facebook" aria-hidden="true"></i>
+              </a>
+            </div>
+            <div>
+              <a href="">
+                <i class="fa fa-twitter" aria-hidden="true"></i>
+              </a>
+            </div>
+            <div>
+              <a href="">
+                <i class="fa fa-linkedin" aria-hidden="true"></i>
+              </a>
+            </div>
+            <div>
+              <a href="">
+                <i class="fa fa-instagram" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="info_form">
+            <h4>
+              Newsletter
+            </h4>
+            <form action="">
+              <input type="text" placeholder="Enter Your Email" />
+              <button type="submit">
+                Subscribe
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+  </section>
+    </div>
+
+<footer class="footer_section">
+    <div class="container">
+      <p>
+        &copy; <span id="displayYear"></span> All Rights Reserved By
+        < / F R V R >
+      </p>
+    </div>
+  </footer>
+  <!-- footer section -->
+
+{% block js %}
+
+{% endblock %}
+
+{% endblock body %}
